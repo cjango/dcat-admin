@@ -199,7 +199,15 @@ trait HasDisplayers
     public function dot($options = [], $default = 'default')
     {
         return $this->prepend(function ($_, $original) use ($options, $default) {
-            $style = is_null($original) ? $default : Arr::get((array) $options, $original, $default);
+            $style = $default;
+
+            if (! is_null($original)) {
+                if (method_exists($original, 'tryFrom')) {
+                    $original = $original->value;
+                }
+
+                $style = Arr::get((array) $options, $original, $default);
+            }
 
             $style = $style === 'default' ? 'dark70' : $style;
 

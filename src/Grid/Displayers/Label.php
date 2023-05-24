@@ -16,6 +16,11 @@ class Label extends AbstractDisplayer
         }
 
         $original = $this->column->getOriginal();
+
+        if (! is_null($original) && method_exists($original, 'tryFrom')) {
+            $original = $original->value;
+        }
+
         $defaultStyle = is_array($style) ? ($style['default'] ?? 'default') : 'default';
 
         $background = $this->formatStyle(

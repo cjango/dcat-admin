@@ -189,5 +189,3 @@ Support this project with your organization. Your logo will show up here with a 
 ### License
 ------------
 `dcat-admin` is licensed under [The MIT License (MIT)](LICENSE).
-
-### 修改说明
