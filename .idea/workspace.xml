@@ -5,85 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78c2d4cd-abac-4873-8369-14705280d6d6" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/issue_template.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.dusk.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Actions/Action.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/Action.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Actions/HasActionHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/HasActionHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Column/HasDisplayers.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Column/HasDisplayers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Label.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Label.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Cases/AuthTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Cases/Form/HasManyTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Cases/Form/ImageTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Cases/IndexTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Cases/MenuTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Components/Component.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Components/Form/Field/HasMany.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Components/Form/Field/MultipleSelect2.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Components/Form/Field/Select2.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Components/Form/Field/Tree.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Components/Form/MenuCreationForm.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Components/Form/MenuEditForm.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Components/Grid/Actions/BatchDelete.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Components/Grid/Actions/Delete.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Components/Grid/BatchActions.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Components/Grid/RowSelector.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Pages/MenuEditPage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Pages/MenuPage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Pages/Page.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Pages/PainterCreatePage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/Pages/PainterEditPage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/console/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Browser/screenshots/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/BrowserExtension.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/ChromeProcess.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Controllers/DropdownController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Controllers/PainterController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Controllers/ReportController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Controllers/UserController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/CreatesApplication.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/DuskTestCase.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Factory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/FactoryBuilder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/InstallTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/SectionTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/InteractsWithDatabase.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Models/File.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Models/Image.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Models/MultipleImage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Models/Painter.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Models/Painting.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Models/Profile.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Models/Tag.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Models/Tree.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Models/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/PHPUnit.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Repositories/Report.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Repositories/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bin/install-admin.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bin/install-dep.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bin/start.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/helpers.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/resources/.ide-helper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/resources/assets/test.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/resources/config/admin.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/resources/config/filesystems.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/resources/lang/en/global.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/resources/lang/en/user.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/resources/migrations/2016_11_22_093148_create_test_tables.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/resources/seeds/UserTableSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/resources/seeds/factory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/resources/stubs/ComposerConfigCommand.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/resources/stubs/artisan" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/resources/views/test.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/resources/zip.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/routes.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/container.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/container.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,7 +152,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684892423969</updated>
       <workItem from="1684892425085" duration="2019000" />
-      <workItem from="1684894579284" duration="184000" />
+      <workItem from="1684894579284" duration="1531000" />
     </task>
     <servers />
   </component>
