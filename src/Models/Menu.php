@@ -28,7 +28,7 @@ class Menu extends Model implements Sortable
      * @var array
      */
     protected $sortable = [
-        'sort_when_creating' => true,
+        'sort_when_creating' => false,
     ];
 
     /**
