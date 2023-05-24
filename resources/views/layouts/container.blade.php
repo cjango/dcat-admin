@@ -22,6 +22,7 @@
 
 <footer class="main-footer pt-1">
     <p class="clearfix blue-grey lighten-2 mb-0 text-center">
+            Jason Admin
             <span class="text-center d-block d-md-inline-block mt-25">
                 v{{ Dcat\Admin\Admin::VERSION }}
             </span>
