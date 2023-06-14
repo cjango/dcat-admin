@@ -7,6 +7,7 @@ use Dcat\Admin\Traits\HasPermissions;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Storage;
@@ -91,5 +92,19 @@ class Administrator extends Model implements AuthenticatableContract, Authorizab
     public function canSeeMenu($menu)
     {
         return true;
+    }
+
+    /**
+     * Notes   : 获取用户显示名称，基本上都是给后台用的
+     *
+     * @Date   : 2023/3/16 18:12
+     * @Author : <Jason.C>
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    public function showName(): Attribute
+    {
+        return new Attribute(
+            get: fn() => sprintf('[A] %s', $this->name),
+        );
     }
 }

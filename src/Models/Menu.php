@@ -20,9 +20,9 @@ class Menu extends Model implements Sortable
     use HasDateTimeFormatter,
         MenuCache,
         ModelTree {
-            allNodes as treeAllNodes;
-            ModelTree::boot as treeBoot;
-        }
+        allNodes as treeAllNodes;
+        ModelTree::boot as treeBoot;
+    }
 
     /**
      * @var array
@@ -154,5 +154,17 @@ class Menu extends Model implements Sortable
         static::saved(function ($model) {
             $model->flushCache();
         });
+    }
+
+    /**
+     * Notes   : 子菜单
+     *
+     * @Date   : 2023/6/14 10:06
+     * @Author : <Jason.C>
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function children(): HasMany
+    {
+        return $this->hasMany(__CLASS__, 'parent_id');
     }
 }
