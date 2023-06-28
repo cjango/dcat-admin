@@ -51,7 +51,9 @@ trait HasDisplayers
             if (is_null($value)) {
                 return $default;
             }
-
+            if (method_exists($value, 'tryFrom')) {
+                $value = $value->value;
+            }
             return Arr::get($values, $value, $default);
         });
     }
