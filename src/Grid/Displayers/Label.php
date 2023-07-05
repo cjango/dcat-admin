@@ -17,7 +17,7 @@ class Label extends AbstractDisplayer
 
         $original = $this->column->getOriginal();
 
-        if (! is_null($original) && method_exists($original, 'tryFrom')) {
+        if (! is_null($original) &&! is_int($original) && ! is_string($original) && method_exists($original, 'tryFrom')) {
             $original = $original->value;
         }
 

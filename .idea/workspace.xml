@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78c2d4cd-abac-4873-8369-14705280d6d6" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Grid/Column/HasDisplayers.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Column/HasDisplayers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Label.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Label.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +119,7 @@
       <path value="$PROJECT_DIR$/vendor/league/flysystem-local" />
       <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
       <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php83" />
     </include_path>
   </component>
   <component name="ProjectId" id="2QDe8wRsj2s9Jd85x2LXe4KewQp" />
@@ -156,6 +159,7 @@
       <workItem from="1686708207635" duration="609000" />
       <workItem from="1686709128584" duration="237000" />
       <workItem from="1687940710049" duration="16000" />
+      <workItem from="1688546603986" duration="175000" />
     </task>
     <servers />
   </component>

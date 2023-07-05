@@ -51,6 +51,10 @@ trait HasDisplayers
             if (is_null($value)) {
                 return $default;
             }
+
+            if (! is_int($value) && ! is_string($value) && method_exists($value, 'tryFrom')) {
+                $value = $value->value;
+            }
             if (method_exists($value, 'tryFrom')) {
                 $value = $value->value;
             }
@@ -204,7 +208,7 @@ trait HasDisplayers
             $style = $default;
 
             if (! is_null($original)) {
-                if (method_exists($original, 'tryFrom')) {
+                if (! is_int($original) && ! is_string($original) && method_exists($original, 'tryFrom')) {
                     $original = $original->value;
                 }
 
