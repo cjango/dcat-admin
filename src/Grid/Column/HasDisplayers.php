@@ -10,6 +10,7 @@ use Dcat\Admin\Grid\Displayers\AbstractDisplayer;
 use Dcat\Admin\Grid\RowAction;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 /**
@@ -75,7 +76,7 @@ trait HasDisplayers
                 return $value;
             }
 
-            return "<b style='color: {$color}'>$value</b>";
+            return "<b style='color: $color'>$value</b>";
         });
     }
 
@@ -289,6 +290,43 @@ trait HasDisplayers
             $bool = empty($map) ? $value : Arr::get($map, $value, $default);
 
             return $bool ? '<i class="feather icon-check font-md-2 font-w-600 text-primary"></i>' : '<i class="feather icon-x font-md-1 font-w-600 text-70"></i>';
+        });
+    }
+
+    /**
+     * Notes   : 文件大小
+     *
+     * @Date   : 2023/7/5 17:06
+     * @Author : <Jason.C>
+     * @param  int  $bytes
+     * @return string
+     */
+    public function filesize(int $bytes): string
+    {
+        if ($bytes >= 1073741824) {
+            $bytes = number_format($bytes / 1073741824, 2).' GB';
+        } elseif ($bytes >= 1048576) {
+            $bytes = number_format($bytes / 1048576, 2).' MB';
+        } elseif ($bytes >= 1024) {
+            $bytes = number_format($bytes / 1024, 2).' KB';
+        } elseif ($bytes > 1) {
+            $bytes = $bytes.' bytes';
+        } elseif ($bytes == 1) {
+            $bytes = $bytes.' byte';
+        } else {
+            $bytes = '0 bytes';
+        }
+        return $bytes;
+    }
+
+    public function diffForHumans($locale = null)
+    {
+        if ($locale) {
+            Carbon::setLocale($locale);
+        }
+
+        return $this->display(function ($value) {
+            return Carbon::parse($value)->diffForHumans();
         });
     }
 }
