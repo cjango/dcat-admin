@@ -2,6 +2,7 @@
 
 namespace Dcat\Admin\Grid\Column;
 
+use Closure;
 use Dcat\Admin\Admin;
 use Dcat\Admin\Exception\InvalidArgumentException;
 use Dcat\Admin\Grid;
@@ -29,9 +30,8 @@ trait HasDisplayers
     {
         $grid = $this->grid;
 
-        $column = $this;
-
-        return $this->display(function ($value) use ($grid, $column, $abstract, $arguments) {
+        return $this->display(function ($value) use ($grid, $abstract, $arguments) {
+            $column = $this;
             /** @var AbstractDisplayer $displayer */
             $displayer = new $abstract($value, $grid, $column, $this);
 
@@ -56,9 +56,7 @@ trait HasDisplayers
             if (! is_int($value) && ! is_string($value) && method_exists($value, 'tryFrom')) {
                 $value = $value->value;
             }
-            if (method_exists($value, 'tryFrom')) {
-                $value = $value->value;
-            }
+
             return Arr::get($values, $value, $default);
         });
     }
@@ -121,7 +119,7 @@ trait HasDisplayers
     public function prepend($val)
     {
         return $this->display(function ($v, $column) use (&$val) {
-            if ($val instanceof \Closure) {
+            if ($val instanceof Closure) {
                 $val = $val->call($this, $v, $column->getOriginal(), $column);
             }
 
@@ -144,12 +142,12 @@ trait HasDisplayers
     public function append($val)
     {
         return $this->display(function ($v, $column) use (&$val) {
-            if ($val instanceof \Closure) {
+            if ($val instanceof Closure) {
                 $val = $val->call($this, $v, $column->getOriginal(), $column);
             }
 
             if (is_array($v)) {
-                array_push($v, $val);
+                $v[] = $val;
 
                 return $v;
             } elseif ($v instanceof Collection) {
@@ -192,7 +190,7 @@ trait HasDisplayers
                 $size
             );
 
-            return "<img src='$src' class='img img-circle'/>";
+            return "<img src='$src' class='img img-circle' alt=''/>";
         });
     }
 
@@ -213,14 +211,14 @@ trait HasDisplayers
                     $original = $original->value;
                 }
 
-                $style = Arr::get((array) $options, $original, $default);
+                $style = Arr::get($options, $original, $default);
             }
 
             $style = $style === 'default' ? 'dark70' : $style;
 
             $background = Admin::color()->get($style, $style);
 
-            return "<i class='fa fa-circle' style='font-size: 13px;color: {$background}'></i>&nbsp;&nbsp;";
+            return "<i class='fa fa-circle' style='font-size: 13px;color: $background'></i>&nbsp;&nbsp;";
         });
     }
 
@@ -255,6 +253,7 @@ trait HasDisplayers
      *
      * @param  string  $action
      * @return $this
+     * @throws \Dcat\Admin\Exception\InvalidArgumentException
      */
     public function action($action)
     {
