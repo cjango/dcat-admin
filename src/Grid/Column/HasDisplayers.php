@@ -28,11 +28,10 @@ trait HasDisplayers
      */
     public function displayUsing($abstract, $arguments = [])
     {
-        $grid = $this->grid;
+        $grid   = $this->grid;
+        $column = $this;
 
-        return $this->display(function ($value) use ($grid, $abstract, $arguments) {
-            $column = $this;
-            /** @var AbstractDisplayer $displayer */
+        return $this->display(function ($value) use ($grid, $abstract, $column, $arguments) {
             $displayer = new $abstract($value, $grid, $column, $this);
 
             return $displayer->display(...$arguments);
