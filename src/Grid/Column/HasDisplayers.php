@@ -7,7 +7,6 @@ use Dcat\Admin\Admin;
 use Dcat\Admin\Exception\InvalidArgumentException;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Grid\Column;
-use Dcat\Admin\Grid\Displayers\AbstractDisplayer;
 use Dcat\Admin\Grid\RowAction;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
@@ -296,28 +295,33 @@ trait HasDisplayers
      *
      * @Date   : 2023/7/5 17:06
      * @Author : <Jason.C>
-     * @param  int  $bytes
-     * @return string
+     * @return \Dcat\Admin\Grid\Column
      */
-    public function filesize(int $bytes): string
+    public function filesize(): Column
     {
-        if ($bytes >= 1073741824) {
-            $bytes = number_format($bytes / 1073741824, 2).' GB';
-        } elseif ($bytes >= 1048576) {
-            $bytes = number_format($bytes / 1048576, 2).' MB';
-        } elseif ($bytes >= 1024) {
-            $bytes = number_format($bytes / 1024, 2).' KB';
-        } elseif ($bytes > 1) {
-            $bytes = $bytes.' bytes';
-        } elseif ($bytes == 1) {
-            $bytes = $bytes.' byte';
-        } else {
-            $bytes = '0 bytes';
-        }
-        return $bytes;
+        return $this->display(function ($value) {
+            if (! $value) {
+                return '';
+            }
+
+            $units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
+
+            for ($i = 0; $value >= 1024 && $i < 5; $i++) {
+                $value /= 1024;
+            }
+            return round($value, 2).$units[$i];
+        });
     }
 
-    public function diffForHumans($locale = null)
+    /**
+     * Notes   : 当前时间差
+     *
+     * @Date   : 2023/8/1 17:53
+     * @Author : <Jason.C>
+     * @param  string|null  $locale
+     * @return \Dcat\Admin\Grid\Column
+     */
+    public function diffForHumans(?string $locale = null): Column
     {
         if ($locale) {
             Carbon::setLocale($locale);
@@ -325,6 +329,75 @@ trait HasDisplayers
 
         return $this->display(function ($value) {
             return Carbon::parse($value)->diffForHumans();
+        });
+    }
+
+    /**
+     * Notes   : 重量，g -> kg -> t
+     *
+     * @Date   : 2023/8/1 17:54
+     * @Author : <Jason.C>
+     * @return \Dcat\Admin\Grid\Column
+     */
+    public function weight(): Column
+    {
+        return $this->display(function ($value) {
+            if (! $value) {
+                return '';
+            }
+
+            $units = ['g', 'kg', 't'];
+
+            for ($i = 0; $value >= 1000 && $i < 2; $i++) {
+                $value /= 1000;
+            }
+            return round($value, 2).$units[$i];
+        });
+    }
+
+    /**
+     * Notes   : 体积 'mm³', 'cm³', 'dm³', 'm³'
+     *
+     * @Date   : 2023/8/1 17:56
+     * @Author : <Jason.C>
+     * @return \Dcat\Admin\Grid\Column
+     */
+    public function volume(): Column
+    {
+        return $this->display(function ($value) {
+            if (! $value) {
+                return '';
+            }
+
+            $units = ['mm³', 'cm³', 'dm³', 'm³'];
+
+            for ($i = 0; $value >= 1000 && $i < 3; $i++) {
+                $value /= 1000;
+            }
+            return round($value, 2).$units[$i];
+        });
+    }
+
+    /**
+     * Notes   : 尺寸
+     *
+     * @Date   : 2023/8/1 17:56
+     * @Author : <Jason.C>
+     * @return \Dcat\Admin\Grid\Column
+     */
+    public function length(): Column
+    {
+        return $this->display(function ($value) {
+            if (! $value) {
+                return '';
+            }
+
+            $units = ['mm', 'cm', 'dm', 'm'];
+
+            for ($i = 0; $value >= 10 && $i < 3; $i++) {
+                $value /= 10;
+            }
+            return round($value, 2).$units[$i];
         });
     }
 }
