@@ -11,7 +11,7 @@ class AdminTablesSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $createdAt = date('Y-m-d H:i:s');
 
@@ -151,14 +151,6 @@ class AdminTablesSeeder extends Seeder
                 'title'         => 'Menu',
                 'icon'          => '',
                 'uri'           => 'auth/menu',
-                'created_at'    => $createdAt,
-            ],
-            [
-                'parent_id'     => 2,
-                'order'         => 7,
-                'title'         => 'Extensions',
-                'icon'          => '',
-                'uri'           => 'auth/extensions',
                 'created_at'    => $createdAt,
             ],
         ]);
