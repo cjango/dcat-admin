@@ -369,12 +369,13 @@ trait HasDisplayers
                 return '';
             }
 
-            $units = ['mm³', 'cm³', 'dm³', 'm³'];
-
-            for ($i = 0; $value >= 1000 && $i < 3; $i++) {
-                $value /= 1000;
+            if ($value > 1e7) {
+                return round($value / 1e9, 2).'m³';
+            } elseif ($value > 10) {
+                return round($value / 1e3, 2).'cm³';
+            } else {
+                return $value.'mm³';
             }
-            return round($value, 2).$units[$i];
         });
     }
 
@@ -389,15 +390,18 @@ trait HasDisplayers
     {
         return $this->display(function ($value) {
             if (! $value) {
-                return '';
+                return '0mm';
             }
 
-            $units = ['mm', 'cm', 'dm', 'm'];
-
-            for ($i = 0; $value >= 10 && $i < 3; $i++) {
-                $value /= 10;
+            if ($value > 1000000) {
+                return round($value / 1000000, 2).'km';
+            } elseif ($value > 1000) {
+                return round($value / 1000, 2).'m';
+            } elseif ($value > 10) {
+                return round($value / 10, 1).'cm';
+            } else {
+                return $value.'mm';
             }
-            return round($value, 2).$units[$i];
         });
     }
 }
