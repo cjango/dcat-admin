@@ -2,27 +2,14 @@
 
 namespace Dcat\Admin\Grid\Displayers;
 
-use Dcat\Admin\Admin;
 use Illuminate\Support\Facades\Storage;
 
 class Thumb extends AbstractDisplayer
 {
-    protected $baseClass = 'thumb';
+    protected string $baseClass = 'thumb';
 
-    protected function addScript()
+    public function display($width = 80, $height = 100): string
     {
-        $script = <<<'JS'
-$('.img-thumbnail').on('click', function () {
-    var $this = $(this), data = $this.data('src');
-    console.log(data)
-});
-JS;
-        Admin::script($script);
-    }
-
-    public function display($width = 80, $height = 100)
-    {
-        $this->addScript();
         $path = $this->column->getOriginal();
 
         if (empty($path)) {
@@ -38,7 +25,7 @@ JS;
         }
 
         return <<<HTML
-<img src="$thumbSrc" data-src="$src" style="max-width:{$width}px;max-height:{$height}px" class="img img-thumbnail">
+<img data-action="preview-img" src="$thumbSrc" data-src="$src" style="max-width:{$width}px;max-height:{$height}px" class="img img-thumbnail">
 HTML;
     }
 }

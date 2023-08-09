@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78c2d4cd-abac-4873-8369-14705280d6d6" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Grid/Displayers/Thumb.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Column.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Column.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/dcat/js/bootstrappers/DataActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/dcat/js/bootstrappers/DataActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/dist/dcat/js/dcat-app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/dist/dcat/js/dcat-app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Thumb.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Thumb.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +170,7 @@
       <workItem from="1690883563678" duration="319000" />
       <workItem from="1690952810712" duration="60000" />
       <workItem from="1691039682087" duration="812000" />
-      <workItem from="1691544448589" duration="708000" />
+      <workItem from="1691544448589" duration="1412000" />
     </task>
     <servers />
   </component>
