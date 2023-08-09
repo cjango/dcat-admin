@@ -19,7 +19,7 @@ use Illuminate\Support\Traits\Macroable;
  * @method $this input(bool|array $options = [])
  * @method $this textarea(bool|array $options = [])
  * @method $this editable(bool|array $options = [])
- * @method $this switch(string $color = '', $refresh = false)
+ * @method $this switch (string $color = '', $refresh = false)
  * @method $this switchGroup($columns = [], string $color = '', $refresh = false)
  * @method $this image($server = '', int $width = 200, int $height = 200)
  * @method $this label($style = 'primary', int $max = null)
@@ -51,6 +51,7 @@ use Illuminate\Support\Traits\Macroable;
  * @method $this studly()
  * @method $this substr($start, $length = null)
  * @method $this ucfirst()
+ * @method $this thumb($width = 80, $height = 100)
  *
  * @mixin Collection
  */
@@ -95,6 +96,7 @@ class Column
         'editable'         => Displayers\Input::class,
         'input'            => Displayers\Input::class,
         'textarea'         => Displayers\Textarea::class,
+        'thumb'            => Displayers\Thumb::class,
     ];
 
     /**
@@ -269,6 +271,8 @@ class Column
     }
 
     /**
+     * @param  \Closure  $condition
+     * @return Column\Condition
      * @example
      *     $grid->column('...')
      *         ->if(function ($column) {
@@ -297,8 +301,6 @@ class Column
      *         ->end()
      *         ->modal()
      *
-     * @param  \Closure  $condition
-     * @return Column\Condition
      */
     public function if(\Closure $condition = null)
     {
@@ -510,14 +512,14 @@ class Column
             $previous = $value;
 
             $callback = $this->bindOriginalRowModel($callback);
-            $value = $callback($value, $this, ...$params);
+            $value    = $callback($value, $this, ...$params);
 
             if (
                 $value instanceof static
                 && ($last = array_pop($this->displayCallbacks))
             ) {
                 [$last, $params] = $last;
-                $last = $this->bindOriginalRowModel($last);
+                $last  = $this->bindOriginalRowModel($last);
                 $value = call_user_func($last, $previous, $this, ...$params);
             }
         }
@@ -693,7 +695,7 @@ class Column
         }
 
         if (is_subclass_of($abstract, AbstractDisplayer::class)) {
-            $grid = $this->grid;
+            $grid   = $this->grid;
             $column = $this;
 
             return $this->display(function ($value) use ($abstract, $grid, $column, $arguments) {
