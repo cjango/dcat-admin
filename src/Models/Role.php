@@ -6,6 +6,7 @@ use Dcat\Admin\Traits\HasDateTimeFormatter;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Collection;
 
 class Role extends Model
 {
@@ -27,7 +28,7 @@ class Role extends Model
         parent::__construct($attributes);
     }
 
-    protected function init()
+    protected function init(): void
     {
         $connection = config('admin.database.connection') ?: config('database.default');
 
@@ -79,7 +80,7 @@ class Role extends Model
     /**
      * Check user has permission.
      *
-     * @param $permission
+     * @param  string|null  $permission
      * @return bool
      */
     public function can(?string $permission): bool
@@ -90,7 +91,7 @@ class Role extends Model
     /**
      * Check user has no permission.
      *
-     * @param $permission
+     * @param  string|null  $permission
      * @return bool
      */
     public function cannot(?string $permission): bool
@@ -104,14 +105,14 @@ class Role extends Model
      * @param  array  $roleIds
      * @return \Illuminate\Support\Collection
      */
-    public static function getPermissionId(array $roleIds)
+    public static function getPermissionId(array $roleIds): Collection
     {
         if (! $roleIds) {
             return collect();
         }
         $related = config('admin.database.role_permissions_table');
 
-        $model = new static();
+        $model   = new static();
         $keyName = $model->getKeyName();
 
         return $model->newQuery()
@@ -127,10 +128,10 @@ class Role extends Model
     }
 
     /**
-     * @param  string  $slug
+     * @param  string|null  $slug
      * @return bool
      */
-    public static function isAdministrator(?string $slug)
+    public static function isAdministrator(?string $slug): bool
     {
         return $slug === static::ADMINISTRATOR;
     }
@@ -140,7 +141,7 @@ class Role extends Model
      *
      * @return void
      */
-    protected static function boot()
+    protected static function boot(): void
     {
         parent::boot();
 

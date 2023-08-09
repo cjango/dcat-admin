@@ -2,12 +2,14 @@
 
 namespace Dcat\Admin\Models;
 
+use Closure;
 use Dcat\Admin\Admin;
+use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Facades\Cache;
 
 trait MenuCache
 {
-    protected $cacheKey = 'dcat-admin-menus-%d-%s';
+    protected string $cacheKey = 'dcat-admin-menus-%d-%s';
 
     /**
      * Get an item from the cache, or execute the given Closure and store the result.
@@ -15,7 +17,7 @@ trait MenuCache
      * @param  \Closure  $builder
      * @return mixed
      */
-    protected function remember(\Closure $builder)
+    protected function remember(Closure $builder): mixed
     {
         if (! $this->enableCache()) {
             return $builder();
@@ -26,6 +28,7 @@ trait MenuCache
 
     /**
      * @return bool|void
+     * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function flushCache()
     {
@@ -39,7 +42,7 @@ trait MenuCache
     /**
      * @return string
      */
-    protected function getCacheKey()
+    protected function getCacheKey(): string
     {
         return sprintf($this->cacheKey, (int) static::withPermission(), Admin::app()->getName());
     }
@@ -47,7 +50,7 @@ trait MenuCache
     /**
      * @return bool
      */
-    public function enableCache()
+    public function enableCache(): bool
     {
         return config('admin.menu.cache.enable');
     }
@@ -57,7 +60,7 @@ trait MenuCache
      *
      * @return \Illuminate\Contracts\Cache\Repository
      */
-    public function getStore()
+    public function getStore(): Repository
     {
         return Cache::store(config('admin.menu.cache.store', 'file'));
     }

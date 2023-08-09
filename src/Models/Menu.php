@@ -7,6 +7,7 @@ use Dcat\Admin\Traits\ModelTree;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 use Spatie\EloquentSortable\Sortable;
 
 /**
@@ -51,7 +52,7 @@ class Menu extends Model implements Sortable
         $this->init();
     }
 
-    protected function init()
+    protected function init(): void
     {
         $connection = config('admin.database.connection') ?: config('database.default');
 
@@ -89,7 +90,7 @@ class Menu extends Model implements Sortable
      * @param  bool  $force
      * @return static[]|\Illuminate\Support\Collection
      */
-    public function allNodes(bool $force = false)
+    public function allNodes(bool $force = false): Collection|static
     {
         if ($force || $this->queryCallbacks) {
             return $this->fetchAll();
@@ -105,7 +106,7 @@ class Menu extends Model implements Sortable
      *
      * @return static[]|\Illuminate\Support\Collection
      */
-    public function fetchAll()
+    public function fetchAll(): Collection|static
     {
         return $this->withQuery(function ($query) {
             if (static::withPermission()) {
@@ -121,7 +122,7 @@ class Menu extends Model implements Sortable
      *
      * @return bool
      */
-    public static function withPermission()
+    public static function withPermission(): bool
     {
         return config('admin.menu.bind_permission') && config('admin.permission.enable');
     }
@@ -131,7 +132,7 @@ class Menu extends Model implements Sortable
      *
      * @return bool
      */
-    public static function withRole()
+    public static function withRole(): bool
     {
         return (bool) config('admin.permission.enable');
     }
@@ -141,7 +142,7 @@ class Menu extends Model implements Sortable
      *
      * @return void
      */
-    protected static function boot()
+    protected static function boot(): void
     {
         static::treeBoot();
 

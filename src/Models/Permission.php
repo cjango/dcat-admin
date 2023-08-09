@@ -2,6 +2,7 @@
 
 namespace Dcat\Admin\Models;
 
+use Closure;
 use Dcat\Admin\Support\Helper;
 use Dcat\Admin\Traits\HasDateTimeFormatter;
 use Dcat\Admin\Traits\ModelTree;
@@ -15,8 +16,8 @@ class Permission extends Model implements Sortable
 {
     use HasDateTimeFormatter,
         ModelTree {
-            ModelTree::boot as treeBoot;
-        }
+        ModelTree::boot as treeBoot;
+    }
 
     /**
      * @var array
@@ -26,7 +27,7 @@ class Permission extends Model implements Sortable
     /**
      * @var array
      */
-    public static $httpMethods = [
+    public static array $httpMethods = [
         'GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD',
     ];
 
@@ -42,7 +43,7 @@ class Permission extends Model implements Sortable
         parent::__construct($attributes);
     }
 
-    protected function init()
+    protected function init(): void
     {
         $connection = config('admin.database.connection') ?: config('database.default');
 
@@ -117,7 +118,7 @@ class Permission extends Model implements Sortable
      * @param  \Closure|null  $closure
      * @return array
      */
-    public static function selectOptions(\Closure $closure = null)
+    public static function selectOptions(Closure $closure = null): array
     {
         $options = (new static())->withQuery($closure)->buildSelectOptions();
 
@@ -126,17 +127,18 @@ class Permission extends Model implements Sortable
 
     /**
      * @param  string  $path
-     * @return mixed
+     * @return string[]
      */
-    public function getHttpPathAttribute($path)
+    public function getHttpPathAttribute(string $path): array
     {
         return explode(',', $path);
     }
 
     /**
      * @param $path
+     * @return mixed|string
      */
-    public function setHttpPathAttribute($path)
+    public function setHttpPathAttribute($path): mixed
     {
         if (is_array($path)) {
             $path = implode(',', $path);
@@ -172,7 +174,7 @@ class Permission extends Model implements Sortable
     /**
      * @param $method
      */
-    public function setHttpMethodAttribute($method)
+    public function setHttpMethodAttribute($method): void
     {
         if (is_array($method)) {
             $this->attributes['http_method'] = implode(',', $method);
@@ -183,7 +185,7 @@ class Permission extends Model implements Sortable
      * @param $method
      * @return array
      */
-    public function getHttpMethodAttribute($method)
+    public function getHttpMethodAttribute($method): array
     {
         if (is_string($method)) {
             return array_filter(explode(',', $method));
@@ -196,8 +198,9 @@ class Permission extends Model implements Sortable
      * Detach models from the relationship.
      *
      * @return void
+     * @throws \Dcat\Admin\Exception\AdminException
      */
-    protected static function boot()
+    protected static function boot(): void
     {
         static::treeBoot();
 

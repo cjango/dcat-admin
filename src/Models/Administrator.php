@@ -5,11 +5,12 @@ namespace Dcat\Admin\Models;
 use Dcat\Admin\Traits\HasDateTimeFormatter;
 use Dcat\Admin\Traits\HasPermissions;
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 
@@ -22,7 +23,8 @@ class Administrator extends Model implements AuthenticatableContract, Authorizab
 {
     use Authenticatable,
         HasPermissions,
-        HasDateTimeFormatter;
+        HasDateTimeFormatter,
+        Notifiable;
 
     const DEFAULT_ID = 1;
 
@@ -40,7 +42,7 @@ class Administrator extends Model implements AuthenticatableContract, Authorizab
         parent::__construct($attributes);
     }
 
-    protected function init()
+    protected function init(): void
     {
         $connection = config('admin.database.connection') ?: config('database.default');
 
@@ -52,9 +54,9 @@ class Administrator extends Model implements AuthenticatableContract, Authorizab
     /**
      * Get avatar attribute.
      *
-     * @return mixed|string
+     * @return string
      */
-    public function getAvatar()
+    public function getAvatar(): string
     {
         $avatar = $this->avatar;
 
@@ -89,7 +91,7 @@ class Administrator extends Model implements AuthenticatableContract, Authorizab
      * @param  array|Menu  $menu
      * @return bool
      */
-    public function canSeeMenu($menu)
+    public function canSeeMenu(array|Menu $menu): bool
     {
         return true;
     }

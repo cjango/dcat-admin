@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
-    protected $primaryKey = 'slug';
-    public $incrementing = false;
-    protected $fillable = ['slug', 'value'];
+    protected $primaryKey   = 'slug';
+    public    $incrementing = false;
+    protected $fillable     = ['slug', 'value'];
 
     /**
      * {@inheritDoc}
@@ -20,7 +20,7 @@ class Setting extends Model
         parent::__construct($attributes);
     }
 
-    protected function init()
+    protected function init(): void
     {
         $connection = config('admin.database.connection') ?: config('database.default');
 
