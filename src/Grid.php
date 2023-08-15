@@ -35,7 +35,7 @@ class Grid
     use Concerns\CanFixColumns;
     use Concerns\CanHidesColumns;
     use Macroable {
-        __call as macroCall;
+        Macroable::__call as macroCall;
     }
 
     const CREATE_MODE_DEFAULT = 'default';
