@@ -13,7 +13,7 @@ class DropdownActions extends Actions
      */
     protected array $default = [];
 
-    public function prepend($action)
+    public function prepend($action): static
     {
         return $this->append($action);
     }
@@ -79,8 +79,9 @@ class DropdownActions extends Actions
         return view($this->view, $actions);
     }
 
-    protected function getViewLabel()
+    protected function getViewLabel(): string
     {
+        return '';
     }
 
     protected function getEditLabel()
