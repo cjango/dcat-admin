@@ -32,9 +32,9 @@ abstract class AbstractDisplayer
     protected Column $column;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Model
+     * @var \Illuminate\Database\Eloquent\Model|\Illuminate\Support\Fluent|array
      */
-    public Model $row;
+    public Model|Fluent|array $row;
 
     /**
      * @var mixed
@@ -47,9 +47,9 @@ abstract class AbstractDisplayer
      * @param  mixed  $value
      * @param  Grid  $grid
      * @param  Column  $column
-     * @param  mixed  $row
+     * @param  Model|Fluent|array  $row
      */
-    public function __construct(mixed $value, Grid $grid, Column $column, mixed $row)
+    public function __construct(mixed $value, Grid $grid, Column $column, Model|Fluent|array $row)
     {
         $this->value  = $value;
         $this->grid   = $grid;
