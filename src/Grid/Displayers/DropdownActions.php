@@ -6,12 +6,12 @@ use Dcat\Admin\Support\Helper;
 
 class DropdownActions extends Actions
 {
-    protected $view = 'admin::grid.dropdown-actions';
+    protected string $view = 'admin::grid.dropdown-actions';
 
     /**
      * @var array
      */
-    protected $default = [];
+    protected array $default = [];
 
     public function prepend($action)
     {
@@ -59,10 +59,10 @@ class DropdownActions extends Actions
     }
 
     /**
-     * @param  \Closure[]  $callback
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param  array  $callbacks
+     * @return string
      */
-    public function display(array $callbacks = [])
+    public function display(array $callbacks = []): string
     {
         $this->resetDefaultActions();
 

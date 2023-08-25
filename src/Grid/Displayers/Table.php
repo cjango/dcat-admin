@@ -6,7 +6,7 @@ use Illuminate\Support\Arr;
 
 class Table extends AbstractDisplayer
 {
-    public function display($titles = [])
+    public function display($titles = []): string
     {
         if (empty($this->value)) {
             return '';

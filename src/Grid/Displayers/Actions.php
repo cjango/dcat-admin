@@ -2,6 +2,7 @@
 
 namespace Dcat\Admin\Grid\Displayers;
 
+use Closure;
 use Dcat\Admin\Actions\Action;
 use Dcat\Admin\Grid\Actions\Delete;
 use Dcat\Admin\Grid\Actions\Edit;
@@ -20,19 +21,19 @@ class Actions extends AbstractDisplayer
     /**
      * @var array
      */
-    protected $appends = [];
+    protected array $appends = [];
 
     /**
      * @var array
      */
-    protected $prepends = [];
+    protected array $prepends = [];
 
     /**
      * Default actions.
      *
      * @var array
      */
-    protected $actions = [
+    protected array $actions = [
         'view'      => true,
         'edit'      => true,
         'quickEdit' => false,
@@ -42,7 +43,7 @@ class Actions extends AbstractDisplayer
     /**
      * @var string
      */
-    protected $resource;
+    protected string $resource;
 
     /**
      * Append a action.
@@ -50,11 +51,11 @@ class Actions extends AbstractDisplayer
      * @param  string|Renderable|Action|Htmlable  $action
      * @return $this
      */
-    public function append($action)
+    public function append($action): static
     {
         $this->prepareAction($action);
 
-        array_push($this->appends, $action);
+        $this->appends[] = $action;
 
         return $this;
     }
@@ -65,7 +66,7 @@ class Actions extends AbstractDisplayer
      * @param  string|Renderable|Action|Htmlable  $action
      * @return $this
      */
-    public function prepend($action)
+    public function prepend($action): static
     {
         $this->prepareAction($action);
 
@@ -100,12 +101,12 @@ class Actions extends AbstractDisplayer
      * @param  bool  $disable
      * @return $this
      */
-    public function disableView(bool $disable = true)
+    public function disableView(bool $disable = true): static
     {
         return $this->setAction('view', ! $disable);
     }
 
-    public function delete(bool $value = true)
+    public function delete(bool $value = true): static
     {
         return $this->setAction('delete', $value);
     }
@@ -116,12 +117,12 @@ class Actions extends AbstractDisplayer
      * @param  bool  $disable
      * @return $this.
      */
-    public function disableDelete(bool $disable = true)
+    public function disableDelete(bool $disable = true): static
     {
         return $this->setAction('delete', ! $disable);
     }
 
-    public function edit(bool $value = true)
+    public function edit(bool $value = true): static
     {
         return $this->setAction('edit', $value);
     }
@@ -132,12 +133,12 @@ class Actions extends AbstractDisplayer
      * @param  bool  $disable
      * @return $this.
      */
-    public function disableEdit(bool $disable = true)
+    public function disableEdit(bool $disable = true): static
     {
         return $this->setAction('edit', ! $disable);
     }
 
-    public function quickEdit(bool $value = true)
+    public function quickEdit(bool $value = true): static
     {
         return $this->setAction('quickEdit', $value);
     }
@@ -148,17 +149,17 @@ class Actions extends AbstractDisplayer
      * @param  bool  $disable
      * @return $this.
      */
-    public function disableQuickEdit(bool $disable = true)
+    public function disableQuickEdit(bool $disable = true): static
     {
         return $this->setAction('quickEdit', ! $disable);
     }
 
     /**
      * @param  string  $key
-     * @param  bool  $disable
+     * @param  bool  $value
      * @return $this
      */
-    protected function setAction(string $key, bool $value)
+    protected function setAction(string $key, bool $value): static
     {
         $this->actions[$key] = $value;
 
@@ -171,7 +172,7 @@ class Actions extends AbstractDisplayer
      * @param $resource
      * @return $this
      */
-    public function setResource($resource)
+    public function setResource($resource): static
     {
         $this->resource = $resource;
 
@@ -183,7 +184,7 @@ class Actions extends AbstractDisplayer
      *
      * @return string
      */
-    public function resource()
+    public function resource(): string
     {
         return $this->resource ?: parent::resource();
     }
@@ -191,7 +192,7 @@ class Actions extends AbstractDisplayer
     /**
      * @return void
      */
-    protected function resetDefaultActions()
+    protected function resetDefaultActions(): void
     {
         $this->view($this->grid->option('view_button'));
         $this->edit($this->grid->option('edit_button'));
@@ -203,10 +204,10 @@ class Actions extends AbstractDisplayer
      * @param  array  $callbacks
      * @return void
      */
-    protected function call(array $callbacks = [])
+    protected function call(array $callbacks = []): void
     {
         foreach ($callbacks as $callback) {
-            if ($callback instanceof \Closure) {
+            if ($callback instanceof Closure) {
                 $callback->call($this->row, $this);
             }
         }
@@ -215,7 +216,7 @@ class Actions extends AbstractDisplayer
     /**
      * {@inheritdoc}
      */
-    public function display(array $callbacks = [])
+    public function display(array $callbacks = []): string
     {
         $this->resetDefaultActions();
 
@@ -224,7 +225,7 @@ class Actions extends AbstractDisplayer
         $toString = [Helper::class, 'render'];
 
         $prepends = array_map($toString, $this->prepends);
-        $appends = array_map($toString, $this->appends);
+        $appends  = array_map($toString, $this->appends);
 
         foreach ($this->actions as $action => $enable) {
             if ($enable) {
@@ -240,8 +241,9 @@ class Actions extends AbstractDisplayer
      * Render view action.
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    protected function renderView()
+    protected function renderView(): string
     {
         $action = config('admin.grid.actions.view') ?: Show::class;
         $action = $action::make($this->getViewLabel());
@@ -252,17 +254,18 @@ class Actions extends AbstractDisplayer
     /**
      * @return string
      */
-    protected function getViewLabel()
+    protected function getViewLabel(): string
     {
         $label = trans('admin.show');
 
-        return "<i title='{$label}' class=\"feather icon-eye grid-action-icon\"></i> &nbsp;";
+        return "<i title='$label' class=\"feather icon-eye grid-action-icon\"></i> &nbsp;";
     }
 
     /**
      * Render edit action.
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     protected function renderEdit()
     {
@@ -279,11 +282,12 @@ class Actions extends AbstractDisplayer
     {
         $label = trans('admin.edit');
 
-        return "<i title='{$label}' class=\"feather icon-edit-1 grid-action-icon\"></i> &nbsp;";
+        return "<i title='$label' class=\"feather icon-edit-1 grid-action-icon\"></i> &nbsp;";
     }
 
     /**
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     protected function renderQuickEdit()
     {
@@ -300,13 +304,14 @@ class Actions extends AbstractDisplayer
     {
         $label = trans('admin.quick_edit');
 
-        return "<i title='{$label}' class=\"feather icon-edit grid-action-icon\"></i> &nbsp;";
+        return "<i title='$label' class=\"feather icon-edit grid-action-icon\"></i> &nbsp;";
     }
 
     /**
      * Render delete action.
      *
      * @return string
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     protected function renderDelete()
     {
@@ -323,6 +328,6 @@ class Actions extends AbstractDisplayer
     {
         $label = trans('admin.delete');
 
-        return "<i class=\"feather icon-trash grid-action-icon\" title='{$label}'></i> &nbsp;";
+        return "<i class=\"feather icon-trash grid-action-icon\" title='$label'></i> &nbsp;";
     }
 }

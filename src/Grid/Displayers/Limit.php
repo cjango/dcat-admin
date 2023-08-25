@@ -18,7 +18,7 @@ JS;
         Admin::script($script);
     }
 
-    public function display($limit = 100, $end = '...')
+    public function display($limit = 100, $end = '...'): string
     {
         $this->value = Helper::htmlEntityEncode($this->value);
 
@@ -48,11 +48,11 @@ JS;
 
         return <<<HTML
 <div class="limit-text">
-    <span class="text">{$value}</span>
+    <span class="text">$value</span>
     &nbsp;<a href="javascript:void(0);" class="limit-more">&nbsp;<i class="fa fa-angle-double-down"></i></a>
 </div>
 <div class="limit-text d-none">
-    <span class="text">{$this->value}</span>
+    <span class="text">$this->value</span>
     &nbsp;<a href="javascript:void(0);" class="limit-more">&nbsp;<i class="fa fa-angle-double-up"></i></a>
 </div>
 HTML;

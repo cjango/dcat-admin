@@ -6,7 +6,7 @@ use Dcat\Admin\Admin;
 
 class ContextMenuActions extends DropdownActions
 {
-    protected $elementId = 'grid-context-menu';
+    protected string $elementId = 'grid-context-menu';
 
     protected function addScript()
     {

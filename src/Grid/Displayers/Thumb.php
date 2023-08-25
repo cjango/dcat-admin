@@ -25,7 +25,7 @@ class Thumb extends AbstractDisplayer
         }
 
         return <<<HTML
-<img data-action="preview-img" src="$thumbSrc" data-src="$src" style="max-width:{$width}px;max-height:{$height}px" class="img img-thumbnail">
+<img data-action="preview-img" src="$thumbSrc" data-src="$src" style="max-width:{$width}px;max-height:{$height}px" class="img img-thumbnail" alt="">
 HTML;
     }
 }

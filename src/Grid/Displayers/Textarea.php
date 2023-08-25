@@ -8,7 +8,7 @@ class Textarea extends Editable
 
     protected $view = 'admin::grid.displayer.editinline.textarea';
 
-    public function defaultOptions()
+    public function defaultOptions(): array
     {
         return [
             'rows' => 5,

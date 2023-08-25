@@ -7,12 +7,12 @@ use Dcat\Admin\Support\Helper;
 
 class Label extends AbstractDisplayer
 {
-    protected $baseClass = 'label';
+    protected string $baseClass = 'label';
 
-    public function display($style = 'primary', $max = null)
+    public function display($style = 'primary', $max = null): string
     {
         if (! $value = $this->value($max)) {
-            return;
+            return '';
         }
 
         $original = $this->column->getOriginal();
@@ -30,24 +30,24 @@ class Label extends AbstractDisplayer
         );
 
         return collect($value)->map(function ($name) use ($background) {
-            return "<span class='{$this->baseClass}' {$background}>$name</span>";
+            return "<span class='$this->baseClass' $background>$name</span>";
         })->implode(' ');
     }
 
-    protected function formatStyle($style)
+    protected function formatStyle($style): string
     {
         $background = 'style="background:#d2d6de;color: #555"';
 
         if ($style !== 'default') {
             $style = Admin::color()->get($style, $style);
 
-            $background = "style='background:{$style}'";
+            $background = "style='background:$style'";
         }
 
         return $background;
     }
 
-    protected function value($max)
+    protected function value($max): array
     {
         $values = Helper::array($this->value);
 

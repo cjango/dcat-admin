@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Downloadable extends AbstractDisplayer
 {
-    public function display($server = '', $disk = null)
+    public function display($server = '', $disk = null): string
     {
         return collect(Helper::array($this->value))->filter()->map(function ($value) use ($server, $disk) {
             if (empty($value)) {
@@ -25,7 +25,7 @@ class Downloadable extends AbstractDisplayer
             $name = Helper::basename($value);
 
             return <<<HTML
-<a href='$src' download='{$name}' target='_blank' class='text-muted'>
+<a href='$src' download='$name' target='_blank' class='text-muted'>
     <i class="feather icon-download"></i> {$name}
 </a>
 HTML;

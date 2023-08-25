@@ -4,7 +4,7 @@ namespace Dcat\Admin\Grid\Displayers;
 
 class ProgressBar extends AbstractDisplayer
 {
-    public function display($style = 'primary', $size = 'sm', $max = 100)
+    public function display($style = 'primary', $size = 'sm', $max = 100): string
     {
         $style = collect((array) $style)->map(function ($style) {
             return 'progress-bar-'.$style;
@@ -12,7 +12,7 @@ class ProgressBar extends AbstractDisplayer
 
         return <<<EOT
 <div class="shadow-100 progress $style">
-  <div class="progress-bar" role="progressbar" aria-valuenow="{$this->value}" aria-valuemin="0" aria-valuemax="{$max}" style="width:{$this->value}%"></div>
+  <div class="progress-bar" role="progressbar" aria-valuenow="$this->value" aria-valuemin="0" aria-valuemax="$max" style="width:$this->value%"></div>
 </div>
 EOT;
     }

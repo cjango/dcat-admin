@@ -2,13 +2,14 @@
 
 namespace Dcat\Admin\Grid\Displayers;
 
+use Closure;
 use Dcat\Admin\Admin;
 
 class Select extends AbstractDisplayer
 {
-    public function display($options = [], $refresh = false)
+    public function display($options = [], $refresh = false): string
     {
-        if ($options instanceof \Closure) {
+        if ($options instanceof Closure) {
             $options = $options->call($this, $this->row);
         }
 
@@ -21,7 +22,7 @@ class Select extends AbstractDisplayer
         ]);
     }
 
-    protected function url()
+    protected function url(): string
     {
         return $this->resource().'/'.$this->getKey();
     }

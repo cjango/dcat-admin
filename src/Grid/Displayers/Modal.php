@@ -2,29 +2,30 @@
 
 namespace Dcat\Admin\Grid\Displayers;
 
+use Closure;
 use Dcat\Admin\Contracts\LazyRenderable;
 use Dcat\Admin\Support\Helper;
 use Dcat\Admin\Widgets\Modal as WidgetModal;
 
 class Modal extends AbstractDisplayer
 {
-    protected $title;
+    protected string $title;
 
-    protected $xl = false;
+    protected bool $xl = false;
 
-    protected $icon = 'fa-clone';
+    protected string $icon = 'fa-clone';
 
-    public function title(string $title)
+    public function title(string $title): void
     {
         $this->title = $title;
     }
 
-    public function xl()
+    public function xl(): void
     {
         $this->xl = true;
     }
 
-    public function icon($icon)
+    public function icon($icon): void
     {
         $this->icon = $icon;
     }
@@ -34,7 +35,7 @@ class Modal extends AbstractDisplayer
         return clone $renderable->payload(['key' => $this->getKey()]);
     }
 
-    public function display($callback = null)
+    public function display($callback = null): string
     {
         $title = $this->value ?: $this->trans('title');
         if (func_num_args() == 2) {
@@ -43,7 +44,7 @@ class Modal extends AbstractDisplayer
 
         $html = $this->value;
 
-        if ($callback instanceof \Closure) {
+        if ($callback instanceof Closure) {
             $callback = $callback->call($this->row, $this);
 
             if (! $callback instanceof LazyRenderable) {
@@ -71,10 +72,10 @@ class Modal extends AbstractDisplayer
             ->button($this->renderButton());
     }
 
-    protected function renderButton()
+    protected function renderButton(): string
     {
-        $icon = $this->icon ? "<i class='fa {$this->icon}'></i>&nbsp;&nbsp;" : '';
+        $icon = $this->icon ? "<i class='fa $this->icon'></i>&nbsp;&nbsp;" : '';
 
-        return "<a href='javascript:void(0)'>{$icon}{$this->value}</a>";
+        return "<a href='javascript:void(0)'>$icon$this->value</a>";
     }
 }

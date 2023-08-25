@@ -11,14 +11,14 @@ class Expand extends AbstractDisplayer
 {
     protected $button;
 
-    protected static $counter = 0;
+    protected static int $counter = 0;
 
-    public function button($button)
+    public function button($button): void
     {
         $this->button = $button;
     }
 
-    public function display($callbackOrButton = null)
+    public function display($callbackOrButton = null): string
     {
         $html = $this->value;
         $remoteUrl = '';
@@ -58,7 +58,7 @@ class Expand extends AbstractDisplayer
         ]);
     }
 
-    protected function getDataKey()
+    protected function getDataKey(): string
     {
         $key = $this->getKey() ?: Str::random(8);
 

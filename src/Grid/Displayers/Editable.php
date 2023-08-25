@@ -8,12 +8,12 @@ abstract class Editable extends AbstractDisplayer
 
     protected $view;
 
-    protected $options = [
+    protected array $options = [
         // 是否刷新页面
         'refresh' => false,
     ];
 
-    public function display($options = [])
+    public function display($options = []): string
     {
         if (is_bool($options)) {
             $options = ['refresh' => $options];

@@ -6,7 +6,7 @@ use Dcat\Admin\Admin;
 
 class Tree extends AbstractDisplayer
 {
-    protected static $js = [
+    protected static array $js = [
         '@grid-extension',
     ];
 
@@ -35,7 +35,7 @@ JS;
         Admin::script($script);
     }
 
-    public function display()
+    public function display(): string
     {
         $this->setupScript();
 

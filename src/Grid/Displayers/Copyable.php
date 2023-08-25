@@ -32,14 +32,14 @@ JS;
         Admin::script($script);
     }
 
-    public function display()
+    public function display(): string
     {
         $this->addScript();
 
         $this->value = Helper::htmlEntityEncode($this->value);
 
         $html = <<<HTML
-<a href="javascript:void(0);" class="grid-column-copyable text-muted" data-content="{$this->value}" title="{$this->trans('copied')}" data-placement="bottom">
+<a href="javascript:void(0);" class="grid-column-copyable text-muted" data-content="$this->value" title="{$this->trans('copied')}" data-placement="bottom">
     <i class="fa fa-copy"></i>
 </a>&nbsp;{$this->value}
 HTML;

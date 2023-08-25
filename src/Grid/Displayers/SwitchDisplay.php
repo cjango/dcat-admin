@@ -2,6 +2,7 @@
 
 namespace Dcat\Admin\Grid\Displayers;
 
+use Closure;
 use Dcat\Admin\Admin;
 
 class SwitchDisplay extends AbstractDisplayer
@@ -13,9 +14,9 @@ class SwitchDisplay extends AbstractDisplayer
         $this->color = Admin::color()->get($color);
     }
 
-    public function display(string $color = '', $refresh = false)
+    public function display(string $color = '', $refresh = false): string
     {
-        if ($color instanceof \Closure) {
+        if ($color instanceof Closure) {
             $color->call($this->row, $this);
         } else {
             $this->color($color);

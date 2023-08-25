@@ -6,11 +6,11 @@ use Dcat\Admin\Admin;
 
 class Orderable extends AbstractDisplayer
 {
-    protected static $js = [
+    protected static array $js = [
         '@grid-extension',
     ];
 
-    public function display()
+    public function display(): string
     {
         Admin::script($this->script());
 
@@ -32,7 +32,7 @@ EOT;
         return <<<JS
         Dcat.grid.Orderable({
             button: '.{$this->grid->getRowName()}-orderable',
-            url: '{$this->resource()}/:key',
+            url: '{$this->resource()}/:key'
         });
 JS;
     }

@@ -4,7 +4,7 @@ namespace Dcat\Admin\Grid\Displayers;
 
 class Button extends AbstractDisplayer
 {
-    public function display($style = 'primary')
+    public function display($style = 'primary'): string
     {
         $style = collect((array) $style)->map(function ($style) {
             return 'btn-'.$style;

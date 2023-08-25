@@ -5,39 +5,42 @@ namespace Dcat\Admin\Grid\Displayers;
 use Dcat\Admin\Admin;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Grid\Column;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Fluent;
+use stdClass;
+use Symfony\Component\Translation\TranslatorInterface;
 
 abstract class AbstractDisplayer
 {
     /**
      * @var array
      */
-    protected static $css = [];
+    protected static array $css = [];
 
     /**
      * @var array
      */
-    protected static $js = [];
+    protected static array $js = [];
 
     /**
      * @var Grid
      */
-    protected $grid;
+    protected Grid $grid;
 
     /**
      * @var Column
      */
-    protected $column;
+    protected Column $column;
 
     /**
      * @var \Illuminate\Database\Eloquent\Model
      */
-    public $row;
+    public Model $row;
 
     /**
      * @var mixed
      */
-    protected $value;
+    protected mixed $value;
 
     /**
      * Create a new displayer instance.
@@ -47,17 +50,17 @@ abstract class AbstractDisplayer
      * @param  Column  $column
      * @param  \stdClass  $row
      */
-    public function __construct($value, Grid $grid, Column $column, $row)
+    public function __construct(mixed $value, Grid $grid, Column $column, stdClass $row)
     {
-        $this->value = $value;
-        $this->grid = $grid;
+        $this->value  = $value;
+        $this->grid   = $grid;
         $this->column = $column;
 
         $this->setRow($row);
         $this->requireAssets();
     }
 
-    protected function requireAssets()
+    protected function requireAssets(): void
     {
         if (static::$js) {
             Admin::js(static::$js);
@@ -68,7 +71,7 @@ abstract class AbstractDisplayer
         }
     }
 
-    protected function setRow($row)
+    protected function setRow($row): void
     {
         if (is_array($row)) {
             $row = new Fluent($row);
@@ -80,7 +83,7 @@ abstract class AbstractDisplayer
     /**
      * @return string
      */
-    public function getElementName()
+    public function getElementName(): string
     {
         $name = explode('.', $this->column->getName());
 
@@ -101,7 +104,7 @@ abstract class AbstractDisplayer
      *
      * @return mixed
      */
-    public function getKey()
+    public function getKey(): mixed
     {
         return $this->row->{$this->grid->getKeyName()};
     }
@@ -111,7 +114,7 @@ abstract class AbstractDisplayer
      *
      * @return string
      */
-    public function resource()
+    public function resource(): string
     {
         return $this->grid->resource();
     }
@@ -122,7 +125,7 @@ abstract class AbstractDisplayer
      * @param  string  $text
      * @return string|\Symfony\Component\Translation\TranslatorInterface
      */
-    protected function trans($text)
+    protected function trans(string $text): TranslatorInterface|string
     {
         return trans("admin.$text");
     }
@@ -132,5 +135,5 @@ abstract class AbstractDisplayer
      *
      * @return mixed
      */
-    abstract public function display();
+    abstract public function display(): string;
 }

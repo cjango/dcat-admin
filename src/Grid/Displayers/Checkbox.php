@@ -11,7 +11,7 @@ class Checkbox extends Editable
 
     protected $view = 'admin::grid.displayer.editinline.checkbox';
 
-    public function display($options = [], $refresh = false)
+    public function display($options = [], $refresh = false): string
     {
         $options['options'] = $options;
         $options['refresh'] = $refresh;

@@ -2,21 +2,22 @@
 
 namespace Dcat\Admin\Grid\Displayers;
 
+use Closure;
 use Dcat\Admin\Admin;
 use Dcat\Admin\Support\Helper;
 use Illuminate\Contracts\Support\Arrayable;
 
 class DialogTree extends AbstractDisplayer
 {
-    protected $url;
+    protected string $url;
 
-    protected $title;
+    protected string $title;
 
-    protected $area = ['580px', '600px'];
+    protected array $area = ['580px', '600px'];
 
-    protected $options = [
-        'plugins' => ['checkbox', 'types'],
-        'core'    => [
+    protected array $options = [
+        'plugins'  => ['checkbox', 'types'],
+        'core'     => [
             'check_callback' => true,
 
             'themes' => [
@@ -27,37 +28,30 @@ class DialogTree extends AbstractDisplayer
         'checkbox' => [
             'keep_selected_style' => false,
         ],
-        'types' => [
+        'types'    => [
             'default' => [
                 'icon' => false,
             ],
         ],
     ];
 
-    protected $columnNames = [
+    protected array $columnNames = [
         'id'     => 'id',
         'text'   => 'name',
         'parent' => 'parent_id',
     ];
 
-    protected $nodes = [];
+    protected array $nodes = [];
 
     protected $checkAll;
 
-    protected $rootParentId = 0;
+    protected int $rootParentId = 0;
 
     /**
-     * @param  array  $data  exp:
-     *                       {
-     *                       "id": "1",
-     *                       "parent": "#",
-     *                       "text": "Dashboard",
-     *                       // "state": {"selected": true}
-     *                       }
      * @param  array  $data
      * @return $this
      */
-    public function nodes($data)
+    public function nodes($data): static
     {
         if ($data instanceof Arrayable) {
             $data = $data->toArray();
@@ -68,21 +62,21 @@ class DialogTree extends AbstractDisplayer
         return $this;
     }
 
-    public function rootParentId($id)
+    public function rootParentId($id): static
     {
         $this->rootParentId = $id;
 
         return $this;
     }
 
-    public function url(string $source)
+    public function url(string $source): static
     {
         $this->url = admin_url($source);
 
         return $this;
     }
 
-    public function checkAll()
+    public function checkAll(): static
     {
         $this->checkAll = true;
 
@@ -93,7 +87,7 @@ class DialogTree extends AbstractDisplayer
      * @param  array  $options
      * @return $this
      */
-    public function options($options = [])
+    public function options($options = []): static
     {
         if ($options instanceof Arrayable) {
             $options = $options->toArray();
@@ -104,7 +98,7 @@ class DialogTree extends AbstractDisplayer
         return $this;
     }
 
-    public function title($title)
+    public function title($title): static
     {
         $this->title = $title;
 
@@ -116,39 +110,39 @@ class DialogTree extends AbstractDisplayer
      * @param  string  $height
      * @return $this
      */
-    public function area(string $width, string $height)
+    public function area(string $width, string $height): static
     {
         $this->area = [$width, $height];
 
         return $this;
     }
 
-    public function setIdColumn(string $name)
+    public function setIdColumn(string $name): static
     {
         $this->columnNames['id'] = $name;
 
         return $this;
     }
 
-    public function setTitleColumn(string $name)
+    public function setTitleColumn(string $name): static
     {
         $this->columnNames['text'] = $name;
 
         return $this;
     }
 
-    public function setParentColumn(string $name)
+    public function setParentColumn(string $name): static
     {
         $this->columnNames['parent'] = $name;
 
         return $this;
     }
 
-    public function display($callbackOrNodes = null)
+    public function display($callbackOrNodes = null): string
     {
         if (is_array($callbackOrNodes) || $callbackOrNodes instanceof Arrayable) {
             $this->nodes($callbackOrNodes);
-        } elseif ($callbackOrNodes instanceof \Closure) {
+        } elseif ($callbackOrNodes instanceof Closure) {
             $callbackOrNodes->call($this->row, $this);
         }
 
@@ -165,7 +159,7 @@ class DialogTree extends AbstractDisplayer
         ]);
     }
 
-    protected function format($val)
+    protected function format($val): string
     {
         return implode(',', Helper::array($val, true));
     }

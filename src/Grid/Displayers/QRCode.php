@@ -9,7 +9,7 @@ use Dcat\Admin\Admin;
  */
 class QRCode extends AbstractDisplayer
 {
-    protected static $js = [
+    protected static array $js = [
         '@qrcode',
     ];
 
@@ -32,7 +32,7 @@ JS;
         Admin::script($script);
     }
 
-    public function display($formatter = null, $width = 150, $height = 150)
+    public function display($formatter = null, $width = 150, $height = 150): string
     {
         $this->addScript();
 

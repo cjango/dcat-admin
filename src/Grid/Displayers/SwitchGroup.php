@@ -2,6 +2,7 @@
 
 namespace Dcat\Admin\Grid\Displayers;
 
+use Closure;
 use Dcat\Admin\Admin;
 use Illuminate\Support\Arr;
 
@@ -9,7 +10,7 @@ class SwitchGroup extends SwitchDisplay
 {
     public function display($columns = [], $color = '', $refresh = false)
     {
-        if ($columns instanceof \Closure) {
+        if ($columns instanceof Closure) {
             $columns = $columns->call($this->row, $this);
         }
 
