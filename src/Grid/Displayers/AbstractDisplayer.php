@@ -7,7 +7,6 @@ use Dcat\Admin\Grid;
 use Dcat\Admin\Grid\Column;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Fluent;
-use stdClass;
 use Symfony\Component\Translation\TranslatorInterface;
 
 abstract class AbstractDisplayer
@@ -48,9 +47,9 @@ abstract class AbstractDisplayer
      * @param  mixed  $value
      * @param  Grid  $grid
      * @param  Column  $column
-     * @param  \stdClass  $row
+     * @param  mixed  $row
      */
-    public function __construct(mixed $value, Grid $grid, Column $column, stdClass $row)
+    public function __construct(mixed $value, Grid $grid, Column $column, mixed $row)
     {
         $this->value  = $value;
         $this->grid   = $grid;

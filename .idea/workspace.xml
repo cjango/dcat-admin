@@ -7,33 +7,6 @@
     <list default="true" id="78c2d4cd-abac-4873-8369-14705280d6d6" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/AbstractDisplayer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/AbstractDisplayer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Actions.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Actions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Badge.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Badge.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Button.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Button.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Checkbox.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Checkbox.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/ContextMenuActions.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/ContextMenuActions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Copyable.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Copyable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/DateFormat.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/DateFormat.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/DialogTree.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/DialogTree.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Downloadable.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Downloadable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/DropdownActions.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/DropdownActions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Editable.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Editable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Expand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Expand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Image.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Image.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Label.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Label.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Limit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Limit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Link.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Link.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Orderable.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Orderable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/ProgressBar.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/ProgressBar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/QRCode.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/QRCode.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Select.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Select.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/SwitchDisplay.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/SwitchDisplay.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/SwitchGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/SwitchGroup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Table.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Textarea.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Textarea.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Thumb.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Thumb.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Displayers/Tree.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Displayers/Tree.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +175,8 @@
       <workItem from="1691735702001" duration="134000" />
       <workItem from="1692078219463" duration="789000" />
       <workItem from="1692869456191" duration="1383000" />
-      <workItem from="1692934507547" duration="951000" />
+      <workItem from="1692934507547" duration="1745000" />
+      <workItem from="1692944091336" duration="31000" />
     </task>
     <servers />
   </component>
