@@ -33,7 +33,7 @@ use Illuminate\Support\Traits\Macroable;
  * @method $this table($titles = [])
  * @method $this select($options = [], $refresh = false)
  * @method $this modal($title = '', $callback = null)
- * @method $this dialogTree($callbackOrNodes = null)
+ * @method $this showTreeInDialog($callbackOrNodes = null)
  * @method $this qrcode($formatter = null, $width = 150, $height = 150)
  * @method $this downloadable($server = '', $disk = null)
  * @method $this copyable()
@@ -74,31 +74,31 @@ class Column
      * @var array
      */
     protected static array $displayers = [
-        'badge'        => Displayers\Badge::class,
-        'button'       => Displayers\Button::class,
-        'checkbox'     => Displayers\Checkbox::class,
-        'copyable'     => Displayers\Copyable::class,
-        'dateFormat'   => Displayers\DateFormat::class,
-        'dialogTree'   => Displayers\DialogTree::class,
-        'downloadable' => Displayers\Downloadable::class,
-        'editable'     => Displayers\Input::class,
-        'expand'       => Displayers\Expand::class,
-        'image'        => Displayers\Image::class,
-        'input'        => Displayers\Input::class,
-        'label'        => Displayers\Label::class,
-        'limit'        => Displayers\Limit::class,
-        'link'         => Displayers\Link::class,
-        'modal'        => Displayers\Modal::class,
-        'orderable'    => Displayers\Orderable::class,
-        'progressBar'  => Displayers\ProgressBar::class,
-        'qrcode'       => Displayers\QRCode::class,
-        'radio'        => Displayers\Radio::class,
-        'select'       => Displayers\Select::class,
-        'switch'       => Displayers\SwitchDisplay::class,
-        'switchGroup'  => Displayers\SwitchGroup::class,
-        'table'        => Displayers\Table::class,
-        'textarea'     => Displayers\Textarea::class,
-        'thumb'        => Displayers\Thumb::class,
+        'badge'            => Displayers\Badge::class,
+        'button'           => Displayers\Button::class,
+        'checkbox'         => Displayers\Checkbox::class,
+        'copyable'         => Displayers\Copyable::class,
+        'dateFormat'       => Displayers\DateFormat::class,
+        'downloadable'     => Displayers\Downloadable::class,
+        'editable'         => Displayers\Input::class,
+        'expand'           => Displayers\Expand::class,
+        'image'            => Displayers\Image::class,
+        'input'            => Displayers\Input::class,
+        'label'            => Displayers\Label::class,
+        'limit'            => Displayers\Limit::class,
+        'link'             => Displayers\Link::class,
+        'modal'            => Displayers\Modal::class,
+        'orderable'        => Displayers\Orderable::class,
+        'progressBar'      => Displayers\ProgressBar::class,
+        'qrcode'           => Displayers\QRCode::class,
+        'radio'            => Displayers\Radio::class,
+        'select'           => Displayers\Select::class,
+        'showTreeInDialog' => Displayers\DialogTree::class,
+        'switch'           => Displayers\SwitchDisplay::class,
+        'switchGroup'      => Displayers\SwitchGroup::class,
+        'table'            => Displayers\Table::class,
+        'textarea'         => Displayers\Textarea::class,
+        'thumb'            => Displayers\Thumb::class,
     ];
 
     /**
